@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotifake/core/config/theme/app_theme.dart';
+import 'package:spotifake/presentation/splash/pages/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,15 +9,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
-      home: Center(
-        child: Text('Hello World'),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: SplashPage(),
     );
   }
 }
