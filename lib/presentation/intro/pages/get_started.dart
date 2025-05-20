@@ -4,6 +4,7 @@ import 'package:spotifake/common/widgets/button/basic_app_button.dart';
 import 'package:spotifake/core/config/assets/app_images.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
 import 'package:spotifake/core/config/theme/app_colors.dart';
+import 'package:spotifake/presentation/choose_mode/pages/choose_mode.dart';
 
 class GetStartedPage extends StatelessWidget {
   const GetStartedPage({super.key});
@@ -32,7 +33,7 @@ class GetStartedPage extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.all(50),
+              padding: const EdgeInsets.all(40),
               child: Column(
                 spacing: 21,
                 children: [
@@ -64,7 +65,10 @@ class GetStartedPage extends StatelessWidget {
               
                   BasicAppButton(
                     onPressed: () {
-                      
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => const ChooseModePage())
+                      );
                     }, 
                     title: 'Get Started',
                   )

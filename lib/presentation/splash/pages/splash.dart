@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
-import 'package:spotifake/presentation/splash/intro/pages/get_started.dart';
+import 'package:spotifake/presentation/intro/pages/get_started.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
