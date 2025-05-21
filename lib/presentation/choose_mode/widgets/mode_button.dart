@@ -35,8 +35,8 @@ class ModeButton extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          
+          ),    
+
           Text(
             title,
             style: TextStyle(

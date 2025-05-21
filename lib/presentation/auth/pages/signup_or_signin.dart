@@ -5,6 +5,7 @@ import 'package:spotifake/common/helpers/is_dark_mode.dart';
 import 'package:spotifake/common/widgets/button/basic_app_button.dart';
 import 'package:spotifake/core/config/assets/app_images.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
+import 'package:spotifake/presentation/auth/pages/signup.dart';
 
 class SignUpOrSignInPage extends StatelessWidget {
   const SignUpOrSignInPage({super.key});
@@ -89,9 +90,7 @@ class SignUpOrSignInPage extends StatelessWidget {
 
                       Expanded(
                         child: BasicAppButton(
-                          onPressed: () {
-                            
-                          }, 
+                          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpPage())), 
                           title: 'Register'
                         ),
                       ),

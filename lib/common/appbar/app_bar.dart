@@ -18,10 +18,11 @@ class BasicAppBar extends StatelessWidget {
               color: colorText.withValues(alpha: 0.05),
               shape: BoxShape.circle,
             ),
-            child: Align(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 6),
               child: Icon(
                 Icons.arrow_back_ios,
-                size: 17, 
+                size: 20, 
                 color: colorText
               ),
             )
