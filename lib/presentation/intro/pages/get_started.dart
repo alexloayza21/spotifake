@@ -38,8 +38,10 @@ class GetStartedPage extends StatelessWidget {
                 spacing: 21,
                 children: [
               
-                  SvgPicture.asset(
-                    AppVectors.logo
+                  SafeArea(
+                    child: SvgPicture.asset(
+                      AppVectors.logo
+                    ),
                   ),
               
                   Spacer(),

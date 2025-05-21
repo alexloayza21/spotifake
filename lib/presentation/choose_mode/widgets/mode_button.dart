@@ -5,11 +5,12 @@ import 'package:spotifake/core/config/theme/app_colors.dart';
 
 class ModeButton extends StatelessWidget {
   const ModeButton({
-    super.key, required this.title, required this.child,
+    super.key, required this.title, required this.child, this.onTap,
   });
 
   final String title;
   final Widget child;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +18,25 @@ class ModeButton extends StatelessWidget {
       child: Column(
         spacing: 20,
         children: [
-    
-          Container(
-            height: 80,
-            width: 80,
-            decoration: BoxDecoration(
-              color: Color(0xff30393C).withValues(alpha: 0.5),
-              shape: BoxShape.circle
-            ),
-            child: ClipOval(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                child: child,
+          
+          GestureDetector(
+            onTap: onTap,
+            child: Container(
+              height: 80,
+              width: 80,
+              decoration: BoxDecoration(
+                color: Color(0xff30393C).withValues(alpha: 0.5),
+                shape: BoxShape.circle
+              ),
+              child: ClipOval(
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                  child: child,
+                ),
               ),
             ),
           ),
-    
+          
           Text(
             title,
             style: TextStyle(
@@ -41,7 +45,7 @@ class ModeButton extends StatelessWidget {
             ),
             textAlign: TextAlign.center
           ),
-    
+          
         ],
       ),
     );
