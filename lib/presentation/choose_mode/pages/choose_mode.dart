@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotifake/common/widgets/button/basic_app_button.dart';
 import 'package:spotifake/core/config/assets/app_images.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
+import 'package:spotifake/presentation/auth/pages/signup_or_signin.dart';
 import 'package:spotifake/presentation/choose_mode/bloc/theme_cubit.dart';
 import 'package:spotifake/presentation/choose_mode/widgets/mode_button.dart';
 
@@ -89,7 +90,7 @@ class ChooseModePage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context, 
-                        MaterialPageRoute(builder: (context) => const ChooseModePage())
+                        MaterialPageRoute(builder: (context) => const SignUpOrSignInPage())
                       );
                     }, 
                     title: 'Continue',
