@@ -5,6 +5,7 @@ import 'package:spotifake/common/helpers/is_dark_mode.dart';
 import 'package:spotifake/common/widgets/button/basic_app_button.dart';
 import 'package:spotifake/core/config/assets/app_images.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
+import 'package:spotifake/presentation/auth/pages/signin.dart';
 import 'package:spotifake/presentation/auth/pages/signup.dart';
 
 class SignUpOrSignInPage extends StatelessWidget {
@@ -16,9 +17,9 @@ class SignUpOrSignInPage extends StatelessWidget {
     Color colorText = IsDarkMode(context).isDarkMode ? Colors.white : Colors.black;
 
     return Scaffold(
+      appBar: BasicAppBar(),
       body: Stack(
         children: [
-          BasicAppBar(colorText: colorText),
 
           Align(
             alignment: Alignment.bottomLeft,
@@ -97,9 +98,7 @@ class SignUpOrSignInPage extends StatelessWidget {
 
                       Expanded(
                         child: TextButton(
-                          onPressed: () {
-                            
-                          }, 
+                          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage())),
                           child: Text(
                             'Sign In',
                             style: TextStyle(

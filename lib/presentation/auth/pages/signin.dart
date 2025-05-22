@@ -3,10 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotifake/common/appbar/app_bar.dart';
 import 'package:spotifake/common/widgets/button/basic_app_button.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
-import 'package:spotifake/presentation/auth/pages/signin.dart';
+import 'package:spotifake/presentation/auth/pages/signup.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +19,22 @@ class SignUpPage extends StatelessWidget {
           padding: const EdgeInsets.all(40),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 20,
             children: [
               
-              _registerText(),
+              _signInText(),
+              const SizedBox(height: 40),
+              _enterUsernameOrEmailTextField(context),
               const SizedBox(height: 20),
-              _fullNameTextField(context),
-              _emailTextField(context),
               _passwordTextField(context),
+              _recoveryPasswordText(),
+              const SizedBox(height: 20),
               BasicAppButton(
                 onPressed: () {
                   
                 }, 
-                title: 'Create Account',
+                title: 'Sign In',
               ),
-              _signInText(context),
+              _registerText(context),
           
             ],
           ),
@@ -42,9 +43,9 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  Widget _registerText() {
+  Widget _signInText() {
     return const Text(
-      'Register',
+      'Sign In',
       style: TextStyle(
         fontSize: 25,
         fontWeight: FontWeight.bold,
@@ -52,19 +53,10 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  Widget _fullNameTextField(BuildContext context) {
+  Widget _enterUsernameOrEmailTextField(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        hintText: 'Full Name',
-      ).applyDefaults(Theme.of(context).inputDecorationTheme), 
-      onTapOutside: (event) => FocusScope.of(context).unfocus(),
-    );
-  }
-
-  Widget _emailTextField(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: 'Enter Email',
+        hintText: 'Enter Username or Email',
       ).applyDefaults(Theme.of(context).inputDecorationTheme), 
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
     );
@@ -83,7 +75,24 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  Widget _signInText(BuildContext context) {
+  Widget _recoveryPasswordText() {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: TextButton(
+        onPressed: () {},
+        child: const Text(
+          'Recovery Password?',
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.black
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _registerText(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: Row(
@@ -91,7 +100,7 @@ class SignUpPage extends StatelessWidget {
         children: [
 
           const Text(
-            'Do you have an account?',
+            'Not A Member?',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
@@ -99,9 +108,9 @@ class SignUpPage extends StatelessWidget {
           ),
           
           TextButton(
-            onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInPage())),
+            onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUpPage())),
             child: const Text(
-              'Sign In',
+              'Register Now',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
