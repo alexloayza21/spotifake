@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotifake/common/appbar/app_bar.dart';
+import 'package:spotifake/common/helpers/is_dark_mode.dart';
 import 'package:spotifake/common/widgets/button/basic_app_button.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
 import 'package:spotifake/presentation/auth/pages/signup.dart';
@@ -10,6 +11,9 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    Color colorText = IsDarkMode(context).isDarkMode ? Color(0xffAEAEAE) : Color(0xff383838);
+    
     return Scaffold(
       appBar: BasicAppBar(
         title: SvgPicture.asset(AppVectors.logo, height: 40, width: 40),
@@ -26,7 +30,7 @@ class SignInPage extends StatelessWidget {
               _enterUsernameOrEmailTextField(context),
               const SizedBox(height: 20),
               _passwordTextField(context),
-              _recoveryPasswordText(),
+              _recoveryPasswordText(colorText),
               const SizedBox(height: 20),
               BasicAppButton(
                 onPressed: () {
@@ -75,17 +79,17 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  Widget _recoveryPasswordText() {
+  Widget _recoveryPasswordText(Color colorText) {
     return Align(
       alignment: Alignment.centerLeft,
       child: TextButton(
         onPressed: () {},
-        child: const Text(
+        child: Text(
           'Recovery Password?',
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: Colors.black
+            color: colorText,
           ),
         ),
       ),
