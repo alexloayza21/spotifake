@@ -8,6 +8,7 @@ import 'package:spotifake/core/config/theme/app_theme.dart';
 import 'package:spotifake/firebase_options.dart';
 import 'package:spotifake/presentation/choose_mode/bloc/theme_cubit.dart';
 import 'package:spotifake/presentation/splash/pages/splash.dart';
+import 'package:spotifake/services_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await initializeDependecies();
 
   runApp(const MyApp());
 }

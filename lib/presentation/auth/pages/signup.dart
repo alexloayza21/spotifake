@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotifake/common/appbar/app_bar.dart';
+import 'package:spotifake/common/snackbar/snackbar.dart';
 import 'package:spotifake/common/widgets/button/basic_app_button.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
+import 'package:spotifake/data/models/auth/create_user_req.dart';
+import 'package:spotifake/domain/usecases/auth/signup_usecase.dart';
 import 'package:spotifake/presentation/auth/pages/signin.dart';
+import 'package:spotifake/presentation/root/pages/root.dart';
+import 'package:spotifake/services_locator.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+  SignUpPage({super.key});
+
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +37,29 @@ class SignUpPage extends StatelessWidget {
               _emailTextField(context),
               _passwordTextField(context),
               BasicAppButton(
-                onPressed: () {
-                  
+                onPressed: () async{
+                  var result = await sl<SignUpUseCase>().call(
+                    params: CreateUserReq(
+                      fullName: _fullNameController.text.toString().trim(), 
+                      email: _emailController.text.toString().trim(), 
+                      password: _passwordController.text.toString().trim()
+                    )
+                  );
+
+                  result.fold((left) {
+                    // Handle error
+                    snackBar(context, content: Text(left), backgroundColor: Colors.red);
+
+                  }, (right) {
+                    // Handle success
+                    snackBar(context, content: Text(right), backgroundColor: Colors.green);
+                    Navigator.pushAndRemoveUntil(
+                      context, 
+                      MaterialPageRoute(builder: (context) => const RootPage()),
+                      (route) => false
+                    );                           
+                  });
+
                 }, 
                 title: 'Create Account',
               ),
@@ -54,6 +84,7 @@ class SignUpPage extends StatelessWidget {
 
   Widget _fullNameTextField(BuildContext context) {
     return TextField(
+      controller: _fullNameController,
       decoration: InputDecoration(
         hintText: 'Full Name',
       ).applyDefaults(Theme.of(context).inputDecorationTheme), 
@@ -63,6 +94,7 @@ class SignUpPage extends StatelessWidget {
 
   Widget _emailTextField(BuildContext context) {
     return TextField(
+      controller: _emailController,
       decoration: InputDecoration(
         hintText: 'Enter Email',
       ).applyDefaults(Theme.of(context).inputDecorationTheme), 
@@ -72,6 +104,7 @@ class SignUpPage extends StatelessWidget {
 
   Widget _passwordTextField(BuildContext context) {
     return TextField(
+      controller: _passwordController,
       decoration: InputDecoration(
         hintText: 'Password',
         suffixIcon: IconButton(
@@ -99,7 +132,7 @@ class SignUpPage extends StatelessWidget {
           ),
           
           TextButton(
-            onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInPage())),
+            onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignInPage())),
             child: const Text(
               'Sign In',
               style: TextStyle(
