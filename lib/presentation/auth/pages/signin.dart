@@ -11,7 +11,7 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+
     Color colorText = IsDarkMode(context).isDarkMode ? Color(0xffAEAEAE) : Color(0xff383838);
     
     return Scaffold(

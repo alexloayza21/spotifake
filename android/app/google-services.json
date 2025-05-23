@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "200261688395",
+    "project_id": "spotifake-2382c",
+    "storage_bucket": "spotifake-2382c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200261688395:android:b2aa0a9bdd63c8ea0581ce",
+        "android_client_info": {
+          "package_name": "com.example.spotifake"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg2P1yGYA_ZWn8XAQnkNLbknZ3dzQSdMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
