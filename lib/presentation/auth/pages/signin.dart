@@ -8,7 +8,7 @@ import 'package:spotifake/core/config/assets/app_vectors.dart';
 import 'package:spotifake/data/models/auth/signin_user_req.dart';
 import 'package:spotifake/domain/usecases/auth/signin_usecase.dart';
 import 'package:spotifake/presentation/auth/pages/signup.dart';
-import 'package:spotifake/presentation/root/pages/root.dart';
+import 'package:spotifake/presentation/home/pages/home.dart';
 import 'package:spotifake/services_locator.dart';
 
 class SignInPage extends StatelessWidget {
@@ -57,7 +57,7 @@ class SignInPage extends StatelessWidget {
                   snackBar(context, content: right, backgroundColor: Colors.green);
                   Navigator.pushAndRemoveUntil(
                     context, 
-                    MaterialPageRoute(builder: (context) => const RootPage()),
+                    MaterialPageRoute(builder: (context) => const HomePage()),
                     (route) => false
                   );                           
                 });

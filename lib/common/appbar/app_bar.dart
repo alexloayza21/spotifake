@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:spotifake/common/helpers/is_dark_mode.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const BasicAppBar({super.key, this.title});
+  const BasicAppBar({super.key, this.title, this.hideBackButton = false});
   final Widget? title;
+  final bool? hideBackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
         elevation: 0,
         title: title ?? Text(''),
         centerTitle: true,
-        leading: IconButton(
+        leading: hideBackButton! ? null : IconButton(
           onPressed: () => Navigator.pop(context),
           icon: Container(
             height: 50,
