@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:spotifake/domain/entities/song/song.dart';
+import 'package:spotifake/domain/entities/song/song_entity.dart';
 
 class SongModel {
 
@@ -27,10 +27,10 @@ class SongModel {
 extension SongModelX on SongModel {
   SongEntity toEntity() {
     return SongEntity(
-      title: title!, 
-      artist: artist!, 
-      duration: duration!, 
-      releaseDate: releaseDate!
+      title: title ?? '', 
+      artist: artist ?? '', 
+      duration: duration ?? 0, 
+      releaseDate: releaseDate ?? Timestamp.now()
     );
   }
 }

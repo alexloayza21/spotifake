@@ -4,10 +4,11 @@ import 'package:spotifake/data/repository/song/song_repository_impl.dart';
 import 'package:spotifake/data/sources/auth/auth_firebase_service.dart';
 import 'package:spotifake/data/sources/songs/song_firebase_service.dart';
 import 'package:spotifake/domain/repository/auth/auth_repository.dart';
-import 'package:spotifake/domain/repository/song/song_repository.dart';
+import 'package:spotifake/domain/repository/song/songs_repository.dart';
 import 'package:spotifake/domain/usecases/auth/signin_usecase.dart';
 import 'package:spotifake/domain/usecases/auth/signup_usecase.dart';
-import 'package:spotifake/domain/usecases/song/song_usecase.dart';
+import 'package:spotifake/domain/usecases/song/news_songs_usecase.dart';
+import 'package:spotifake/domain/usecases/song/play_list_usecase.dart';
 
 final sl = GetIt.instance;
 
@@ -27,21 +28,25 @@ Future<void> initializeDependecies() async {
     AuthRepositoryImpl()
   );
 
-  sl.registerSingleton<SongRepository>(
+  sl.registerSingleton<SongsRepository>(
     SongRepositoryImpl()
   );
 
   //* Usecases
+  sl.registerSingleton<SignUpUseCase>(
+   SignUpUseCase()
+  );
+
   sl.registerSingleton<SignInUseCase>(
     SignInUseCase()
   );
 
-  sl.registerSingleton<SignUpUseCase>(
-    SignUpUseCase()
+  sl.registerSingleton<NewsSongUsecase>(
+    NewsSongUsecase()
   );
 
-  sl.registerSingleton<SongUsecase>(
-    SongUsecase()
+  sl.registerSingleton<PlayListUsecase>(
+    PlayListUsecase()
   );
 
 }

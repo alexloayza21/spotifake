@@ -5,6 +5,8 @@ import 'package:spotifake/common/helpers/is_dark_mode.dart';
 import 'package:spotifake/core/config/assets/app_images.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
 import 'package:spotifake/core/config/theme/app_colors.dart';
+import 'package:spotifake/presentation/home/widgets/news_songs.dart';
+import 'package:spotifake/presentation/home/widgets/play_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,13 +36,31 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         hideBackButton: true,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 20,
-          children: [
-            _homeTopCard(),
-            _tabs(colorText),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 20,
+            children: [
+              _homeTopCard(),
+              _tabs(colorText),
+              SizedBox(
+                height: 260,
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    NewsSongs(),
+                    Container(),
+                    Container(),
+                    Container(),
+                  ]
+                ),
+              ),
+          
+              SizedBox(height: 10),
+              PlayList(),
+            ],
+          ),
         )
       )
     );
