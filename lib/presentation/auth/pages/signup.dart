@@ -48,11 +48,11 @@ class SignUpPage extends StatelessWidget {
 
                   result.fold((left) {
                     // Handle error
-                    snackBar(context, content: Text(left), backgroundColor: Colors.red);
+                    snackBar(context, content: left, backgroundColor: Colors.red);
 
                   }, (right) {
                     // Handle success
-                    snackBar(context, content: Text(right), backgroundColor: Colors.green);
+                    snackBar(context, content: right, backgroundColor: Colors.green);
                     Navigator.pushAndRemoveUntil(
                       context, 
                       MaterialPageRoute(builder: (context) => const RootPage()),
