@@ -6,9 +6,10 @@ import 'package:spotifake/core/config/theme/app_colors.dart';
 import 'package:spotifake/domain/entities/song/song_entity.dart';
 
 class FavoriteButton extends StatelessWidget {
-  const FavoriteButton({super.key, required this.song, this.size = 25});
+  const FavoriteButton({super.key, required this.song, this.size = 25, this.function});
   final SongEntity song;
   final double? size;
+  final Function? function;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,13 @@ class FavoriteButton extends StatelessWidget {
           var cubit = context.read<FavoriteButtonCubit>();
           if (state is FavoriteButtonInitial) {
             return IconButton(
-              onPressed: () => cubit.updateFavoriteButton(song.songId), 
+              onPressed: () async{
+                await cubit.updateFavoriteButton(song.songId);
+
+                if(function != null){
+                  function!();
+                }
+              }, 
               icon: Icon(
               song.isFavorite ? Icons.favorite : Icons.favorite_outline,
               color: AppColors.darkGrey,

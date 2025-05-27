@@ -77,7 +77,7 @@ class PlayList extends StatelessWidget {
               ),
           
               Text(song.duration.toString().replaceAll('.', ':'), style: TextStyle(fontSize: 15),),
-              FavoriteButton(song: song)// Format duration
+              FavoriteButton(song: song)
             ],
           ),
         );

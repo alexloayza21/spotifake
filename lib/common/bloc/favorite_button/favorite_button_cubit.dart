@@ -6,7 +6,7 @@ import 'package:spotifake/services_locator.dart';
 class FavoriteButtonCubit extends Cubit<FavoriteButtonState>  {
   FavoriteButtonCubit() : super(FavoriteButtonInitial());
 
-  void updateFavoriteButton(String songId) async{
+  Future<void> updateFavoriteButton(String songId) async{
     var result = await sl<AddOrRemoveFavoriteUsecase>().call(params: songId);
 
     result.fold(

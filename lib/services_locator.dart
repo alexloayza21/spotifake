@@ -9,6 +9,7 @@ import 'package:spotifake/domain/usecases/auth/signin_usecase.dart';
 import 'package:spotifake/domain/usecases/auth/signup_usecase.dart';
 import 'package:spotifake/domain/usecases/auth/user_usecase.dart';
 import 'package:spotifake/domain/usecases/song/add_or_remove_favorite_usecase.dart';
+import 'package:spotifake/domain/usecases/song/get_favorite_songs_usecase.dart';
 import 'package:spotifake/domain/usecases/song/is_favorite_song_usecase.dart';
 import 'package:spotifake/domain/usecases/song/news_songs_usecase.dart';
 import 'package:spotifake/domain/usecases/song/play_list_usecase.dart';
@@ -62,6 +63,10 @@ Future<void> initializeDependecies() async {
 
   sl.registerSingleton<UserUsecase>(
     UserUsecase()
+  );
+
+  sl.registerSingleton<GetFavoriteSongsUsecase>(
+    GetFavoriteSongsUsecase()
   );
 
 }
