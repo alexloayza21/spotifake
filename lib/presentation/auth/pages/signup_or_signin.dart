@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotifake/common/appbar/app_bar.dart';
+import 'package:spotifake/common/widgets/appbar/app_bar.dart';
 import 'package:spotifake/common/helpers/is_dark_mode.dart';
 import 'package:spotifake/common/widgets/button/basic_app_button.dart';
 import 'package:spotifake/core/config/assets/app_images.dart';

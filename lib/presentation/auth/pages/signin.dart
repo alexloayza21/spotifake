@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spotifake/common/appbar/app_bar.dart';
+import 'package:spotifake/common/widgets/appbar/app_bar.dart';
 import 'package:spotifake/common/helpers/is_dark_mode.dart';
-import 'package:spotifake/common/snackbar/snackbar.dart';
+import 'package:spotifake/common/widgets/snackbar/snackbar.dart';
 import 'package:spotifake/common/widgets/button/basic_app_button.dart';
 import 'package:spotifake/core/config/assets/app_vectors.dart';
 import 'package:spotifake/data/models/auth/signin_user_req.dart';
