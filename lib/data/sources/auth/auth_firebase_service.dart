@@ -1,14 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:spotifake/core/config/constants/app_urls.dart';
 import 'package:spotifake/data/models/auth/create_user_req.dart';
 import 'package:spotifake/data/models/auth/signin_user_req.dart';
+import 'package:spotifake/data/models/auth/user.dart';
+import 'package:spotifake/domain/entities/auth/user.dart';
 
 abstract class AuthFirebaseService {
 
   Future<Either> signIn(SigninUserReq signinUserReq);
 
   Future<Either> signUp(CreateUserReq createUserReq);
+  
+  Future<Either> getUser();
   
 }
 
@@ -83,6 +88,26 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
       return Left(message);
       
     }    
+  }
+  
+  @override
+  Future<Either> getUser() async{
+    try {
+      FirebaseAuth auth = FirebaseAuth.instance;
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      
+      var user = await firestore.collection('Users').doc(
+        auth.currentUser?.uid
+      ).get();
+
+      UserModel userModel = UserModel.fromJson(user.data()!);
+      userModel.imgUrl = auth.currentUser?.photoURL ?? AppUrls.defaultImg;
+      UserEntity userEntity = userModel.toEntity();
+      return Right(userEntity);
+
+    } catch (e) {
+      return Left('Error fetching user: ${e.toString()}');
+    }
   }
   
 }

@@ -7,6 +7,7 @@ import 'package:spotifake/core/config/assets/app_vectors.dart';
 import 'package:spotifake/core/config/theme/app_colors.dart';
 import 'package:spotifake/presentation/home/widgets/news_songs.dart';
 import 'package:spotifake/presentation/home/widgets/play_list.dart';
+import 'package:spotifake/presentation/profile/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,6 +35,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       appBar: BasicAppBar(
         title: SvgPicture.asset(AppVectors.logo, height: 40, width: 40),
         hideBackButton: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, size: 30),
+            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()))
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

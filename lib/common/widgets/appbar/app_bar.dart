@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:spotifake/common/helpers/is_dark_mode.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const BasicAppBar({super.key, this.title, this.hideBackButton = false, this.actions});
+  const BasicAppBar({super.key, this.title, this.hideBackButton = false, this.actions, this.backgroundColor});
   final Widget? title;
   final bool? hideBackButton;
   final List<Widget>? actions;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
     Color colorText = IsDarkMode(context).isDarkMode ? Colors.white : Colors.black;
     
     return AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: backgroundColor ?? Colors.transparent,
         elevation: 0,
         title: title ?? Text(''),
         centerTitle: true,
